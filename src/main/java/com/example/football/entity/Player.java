@@ -1,9 +1,6 @@
 package com.example.football.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -12,12 +9,15 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @Entity
+@Table(name = "spiller")
 public class Player {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
-
-    String name, country, position;
+    @Column(name = "player_name", length = 70, nullable = false)
+    String name;
+    String country;
+    String position;
 
     public Player(String name, String country, String position) {
         this.name = name;
